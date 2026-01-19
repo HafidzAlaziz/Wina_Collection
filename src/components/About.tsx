@@ -1,4 +1,5 @@
 import { CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function About() {
     const benefits = [
@@ -40,13 +41,17 @@ export default function About() {
 
                     {/* Decorative Image/Pattern Area */}
                     <div className="relative">
-                        <div className="aspect-square rounded-2xl bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center relative overflow-hidden group">
-                            {/* Placeholder for actual store image */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-green-100 to-amber-50 opacity-50 transition-opacity group-hover:opacity-75" />
-                            <div className="text-center p-8 z-10">
-                                <span className="block text-6xl mb-4">🌿</span>
-                                <p className="text-gray-500 font-medium">Foto Toko / Aktivitas</p>
-                                <p className="text-sm text-gray-400 mt-2">(Dapat diganti dengan foto asli lokasi)</p>
+                        <div className="aspect-square rounded-2xl overflow-hidden relative shadow-xl group">
+                            <Image
+                                src="/images/herbal-shelf.png"
+                                alt="Koleksi Herbal Wina Collection"
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+
+                            {/* Overlay info */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                                <p className="text-white font-medium">Suasana di Toko</p>
                             </div>
                         </div>
                         {/* Decorative Elements */}

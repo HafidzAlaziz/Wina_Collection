@@ -1,13 +1,15 @@
+import Image from 'next/image';
 
 export default function Gallery() {
     // Using placeholders for now. Replace src with actual images if provided.
+    // Using real images
     const images = [
-        { src: '/api/placeholder/400/300', alt: 'Rak Produk Herbal' },
-        { src: '/api/placeholder/400/400', alt: 'Suasana Toko' },
-        { src: '/api/placeholder/400/300', alt: 'Koleksi Madu' },
-        { src: '/api/placeholder/400/400', alt: 'Produk Habbatussauda' },
-        { src: '/api/placeholder/400/300', alt: 'Minyak Wangi & Zaitun' },
-        { src: '/api/placeholder/400/400', alt: 'Pelayanan Pelanggan' },
+        { src: '/images/herbal-shelf.png', alt: 'Rak Produk Herbal' },
+        { src: '/images/store-interior.png', alt: 'Suasana Toko' },
+        { src: '/images/honey-collection.png', alt: 'Koleksi Madu' },
+        { src: '/images/hero-bg.png', alt: 'Interior Toko' },
+        { src: '/images/herbal-shelf.png', alt: 'Produk Habbatussauda' },
+        { src: '/images/honey-collection.png', alt: 'Minyak Wangi & Zaitun' },
     ];
 
     return (
@@ -20,25 +22,19 @@ export default function Gallery() {
                             Intip suasana toko kami dan berbagai kelengkapan produk yang tersedia.
                         </p>
                     </div>
-                    <div className="hidden md:block">
-                        <button className="text-primary font-semibold hover:text-green-800 transition-colors">
-                            Lihat Semua Foto &rarr;
-                        </button>
-                    </div>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                     {images.map((img, idx) => (
                         <div key={idx} className={`relative rounded-xl overflow-hidden group ${idx % 2 === 0 ? 'aspect-[4/3]' : 'aspect-square'}`}>
-                            {/* 
-                    Note: Using colored divs as placeholders since real images aren't available. 
-                    In a real implementation, <Image /> from 'next/image' would be used here.
-                */}
-                            <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 group-hover:scale-105 transition-transform duration-500">
-                                <span className="text-xs md:text-sm font-medium">{img.alt}</span>
-                            </div>
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <span className="text-white font-semibold tracking-wide">Lihat</span>
+                            <Image
+                                src={img.src}
+                                alt={img.alt}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span className="text-white font-semibold tracking-wide drop-shadow-md">{img.alt}</span>
                             </div>
                         </div>
                     ))}
